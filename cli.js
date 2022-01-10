@@ -11,7 +11,12 @@ const rl = readline.createInterface({
  function bowlingRoll(){
   return new Promise(resolve => {
     rl.question('Enter a roll: ', (answer) => {
-      if (parseInt(answer) - bowling.remainder() <= 0 ) {
+      console.log(bowling.turn)
+      console.log(bowling.roll)
+      if (bowling.turn === 10 && bowling.roll >= 2) {console.log(bowling.stillRolling())}
+      if (parseInt(answer) - bowling.remainder() <= 0 && ((bowling.turn < 10) || bowling.turn === 10 && bowling.stillRolling() === true) || 
+      (bowling.turn === 10 && ((bowling.stillRolling() === true)))) 
+      {
         bowling.myRoll(parseInt(answer))
         console.log(`Current bowls:`)
         bowling.rollsIveDone()
